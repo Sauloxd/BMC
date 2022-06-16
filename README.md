@@ -32,3 +32,7 @@ Things you may want to cover:
 `bundle exec dip provision`
 `bundle exec dip rails s`
 `./build.sh`
+
+
+https://thecodest.co/blog/deploying-rails-app-with-amazon-ecs/
+https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development
