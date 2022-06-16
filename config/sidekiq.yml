@@ -1,0 +1,12 @@
+:logfile: ./log/sidekiq.log
+:concurrency: <%= ENV.fetch('SIDEKIQ_CONCURRENCY', 5) %>
+
+:queues:
+  - [lowest_priority, 1]
+  - [low_priority, 3]
+  - [editor_mass_actions, 4]
+  - [autoscale_mass_actions, 4]
+  - [default, 5]
+  - [mailers, 8]
+  - [notifications, 8]
+  - [high_priority, 10]
