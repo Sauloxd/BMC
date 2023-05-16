@@ -22,7 +22,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         gnupg2 \
         git  \
         curl \
-        vim 
+        vim  \
+        # To use devcontainer in vscode
+        openssh-client
 
 # Install Postgres
 ARG PG_MAJOR=14
