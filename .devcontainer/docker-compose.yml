@@ -2,9 +2,10 @@ x-app: &app
   build:
     context: .
     args:
-      RUBY_VERSION: '3.1.0'
-      PG_MAJOR: '14'
-  image: example-dev:1.0.0
+      RUBY_VERSION: '3.2.2'
+      PG_MAJOR: '15'
+  working_dir: /app
+  image: example-dev:1.0.2
   environment: &env
     RAILS_ENV: ${RAILS_ENV:-development}
   tmpfs:
@@ -41,7 +42,7 @@ x-backend: &backend
       condition: service_healthy
 
 services:
-  runner: 
+  runner:
     <<: *backend
     command: zsh
 

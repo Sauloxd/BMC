@@ -1,10 +1,5 @@
 {
   "name": "Saulo.dev blog",
-  "customizations": {
-    "vscode": {
-      "extensions": ["ms-azuretools.vscode-docker"]
-    }
-  },
   "dockerComposeFile": "docker-compose.yml",
   "service": "runner",
   "workspaceFolder": "/app",
