@@ -1,4 +1,6 @@
 # Breakable Toy
+The most vanilla RailsApp possible.
+
 
 ## How to develop
 
@@ -6,7 +8,10 @@ Use vscode devcontainer to create a image with all OS dependencies for developme
 And remotely conect vscode to it so vscode terminal is inside this image.
 Download extensions in `.vscode` and that's it! Ready to run!
 
-## Git
+
+
+## FAQ
+### Git
 
 If using WSL, vscode devcontainers reuse ssh keys from host.
 It doesn't reuse keys from WSL, but from windows host.
