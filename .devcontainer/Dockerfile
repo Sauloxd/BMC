@@ -47,7 +47,6 @@ RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v
     -p git \
     -p https://github.com/zsh-users/zsh-autosuggestions \
     -p https://github.com/zsh-users/zsh-completions
-RUN echo "exec zsh" >> $HOME/.bashrc
 
 # Configure bundler
 ENV LANG=C.UTF-8 \
