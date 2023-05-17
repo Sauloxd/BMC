@@ -112,6 +112,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    language_server-protocol (3.17.0.3)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -142,6 +143,7 @@ GEM
     parser (3.2.2.1)
       ast (~> 2.4.1)
     pg (1.5.3)
+    prettier_print (1.2.1)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -196,6 +198,10 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.28.1)
       parser (>= 3.2.1.0)
+    ruby-lsp (0.5.1)
+      language_server-protocol (~> 3.17.0)
+      sorbet-runtime
+      syntax_tree (>= 6.1.1, < 7)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.9.1)
@@ -218,6 +224,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
+    sorbet-runtime (0.5.10830)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -227,6 +234,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    syntax_tree (6.1.1)
+      prettier_print (>= 1.2.0)
     thor (1.2.2)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -267,6 +276,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  ruby-lsp
   selenium-webdriver
   solargraph
   sprockets-rails
