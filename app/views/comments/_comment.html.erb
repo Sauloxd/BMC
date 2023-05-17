@@ -1,6 +1,14 @@
-<div>
-    <%= comment.author %>
-</div>
-<div>
-    <%= comment.body %>
-</div>
+<% if !comment.archived? %>
+    <div>---------------</div>
+    <p><%= comment.id %></p>
+    <p><%= comment.archived? %></p>
+     <p><%= comment.to_json %></p>
+    <div>
+        <%= comment.author %>
+    </div>
+    <div>
+        <%= comment.body %>
+    </div>
+
+    <%= link_to "delete", [comment.article, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<% end %>

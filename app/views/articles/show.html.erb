@@ -15,7 +15,7 @@
 <%= link_to "Back", articles_path %>
 <h2> Create a new comment: </h2>
 
-<%= render "comments/form", article: @article %>
-
 <h2> Comments </h2>
 <%= render @article.comments %>
+
+<%= render "comments/form", article: @article %>
