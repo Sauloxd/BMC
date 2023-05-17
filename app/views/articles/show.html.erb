@@ -12,3 +12,10 @@
 
 <%= link_to "Edit", edit_article_path(@article) %>
 <%= link_to "Destroy", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+<h2> Create a new comment: </h2>
+
+<%= render "comments/form", article: @article %>
+
+<h2> Comments </h2>
+<%= render @article.comments %>
