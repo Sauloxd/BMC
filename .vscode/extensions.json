@@ -1,6 +1,8 @@
 {
     "recommendations": [
       "ms-vscode-remote.vscode-remote-extensionpack", // Remote Development
-      "ms-azuretools.vscode-docker"
+      "ms-azuretools.vscode-docker",
+      // "Shopify.ruby-lsp", // ruby lsp: https://shopify.engineering/improving-the-developer-experience-with-ruby-lsp
+      "castwide.solargraph"
     ]
 }

@@ -1,0 +1,7 @@
+{
+    "solargraph.transport": "external",
+    "solargraph.externalServer": {
+        "host": "solargraph",
+        "port": 7658
+    }
+}

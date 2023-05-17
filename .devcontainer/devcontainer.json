@@ -4,5 +4,9 @@
   "service": "runner",
   "workspaceFolder": "/app",
   "shutdownAction": "stopCompose",
-  "forwardPorts": [3000]
+  "customizations": {
+    "vscode": {
+      "extensions": ["castwide.solargraph"]
+    }
+  }
 }
