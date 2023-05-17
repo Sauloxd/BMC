@@ -1,0 +1,14 @@
+
+<h1>Articles
+  <%= params[:id] %>
+</h1>
+
+<h2>
+    <%= @article.title %>
+</h2>
+<h3>
+    <%= @article.body %>
+</h3>
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Destroy", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
