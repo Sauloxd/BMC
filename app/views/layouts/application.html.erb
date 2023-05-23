@@ -11,10 +11,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="h-screen max-h-screen">
     <%= yield %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %> </p>
+    <% if notice %>
+      <p class="absolute rounded text-white bg-gray-500 bottom-2 left-2 p-2 text-sm"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="absolute rounded text-white bg-indigo-500 top-2 left-2 p-2 text-sm"><%= alert %></p>
+    <% end %>
   </body>
 </html>
