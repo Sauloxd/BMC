@@ -247,6 +247,8 @@ GEM
       railties (>= 6.0.0)
     syntax_tree (6.1.1)
       prettier_print (>= 1.2.0)
+    tailwindcss-rails (2.0.29-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.2)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -295,6 +297,7 @@ DEPENDENCIES
   solargraph
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console
