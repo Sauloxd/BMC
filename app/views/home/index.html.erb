@@ -1,0 +1,55 @@
+<div class="flex flex-row h-screen">
+  <div class="flex flex-col p-4 justify-items-center min-w-[300px]">
+    <p class="text-lg font-bold mb-12">
+      BMC
+    </p>
+    <div class="grow">
+      <a class="flex flex-row p-2 cursor-pointer items-center hover:bg-indigo-100 transition rounded font-semibold">
+        <div class="mr-2">
+          🎾
+        </div>
+        <div class="text-sm">
+          Ranking
+        </div>
+      </a>
+
+      <a class="flex flex-row p-2 cursor-pointer items-center hover:bg-indigo-100 transition rounded font-semibold">
+        <div class="mr-2">
+          📸
+        </div>
+        <div class="text-sm">
+          Photos
+        </div>
+      </a>
+
+      <a class="flex flex-row p-2 cursor-pointer items-center hover:bg-indigo-100 transition rounded font-semibold">
+        <div class="mr-2">
+          🏖️
+        </div>
+        <div class="text-sm">
+          Trips
+        </div>
+      </a>
+    </div>
+    <a class="text-sm" href="">
+      Sign out🚪🚶‍♀️
+    </a>
+
+  </div>
+  <div class="grow flex flex-col">
+    <div class="flex justify-between items-center px-4 py-2">
+      <p class="text-sm font-semibold">
+        Hello <a class="hover:text-indigo-500 rounded cursor-pointer"> <%= current_user.email %></a> 👋
+      </p>
+      <a href="" class="cursor-pointer" >
+        <img
+          class="shadow rounded-full h-8 w-8" 
+          src="https://lh3.googleusercontent.com/ogw/AOLn63HSPYTD4PWjX67jvQetsSzRogae75Y7iPkV-tWrUg=s32-c-mo" 
+          alt="Your profile picture">
+      </a>
+    </div>
+    <div class="grow bg-slate-100">
+
+    </div>
+  </div>
+</div>
