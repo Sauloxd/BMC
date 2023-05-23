@@ -3,5 +3,7 @@
     "solargraph.externalServer": {
         "host": "solargraph",
         "port": 7658
-    }
+    },
+    "emmet.includeLanguages": {"erb": "html", "ruby": "html"},
+    "emmet.showSuggestionsAsSnippets": true
 }
