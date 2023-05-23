@@ -9,4 +9,5 @@
   <% end %>
 
   <%= link_to "New Article", new_article_path %>
+  <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </ul>
