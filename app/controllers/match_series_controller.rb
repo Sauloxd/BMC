@@ -7,14 +7,21 @@ class MatchSeriesController < ApplicationController
       .order(created_at: :desc)
   end
 
-  def show
-    binding.pry
-  end
   def edit
-    binding.pry
+    @match_series = MatchSeries.find(params[:id]) 
   end
+
   def update
-    binding.pry
+    @match_series = MatchSeries.find(params[:id]) 
+
+    if @match_series.update(match_series_params)
+      respond_to do |format|
+        format.html { redirect_to match_series_path }
+        format.turbo_stream
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def new

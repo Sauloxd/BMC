@@ -1,17 +1,26 @@
-
-<% if match_series.errors.any? %>
-  <div class="alert alert-danger">
-    <%= match_series.errors.full_messages.to_sentence %>
+<%= form_for match_series do |f| %>
+  <div>
+    <%= f.label :name, class: {
+      "text-sm block" => true,
+      "text-red-400" => match_series.errors[:name].present?,
+    } %>
+    <%= f.text_field :name, 
+      autofocus: true,
+      placeholder: 'Sand Series',
+      class: {
+        "rounded placeholder:text-slate-200" =>  true,
+        "border-indigo-300" => match_series.errors[:name].empty?,
+        "border-red-400" => match_series.errors[:name].present?
+      } 
+    %>
+    <% match_series.errors[:name].each do |msg| %>
+      <div class="mt-2 text-xs text-red-400"> 
+        <%= msg %>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
-<%= form_with model: match_series, class: "row g-3 mb-3" do |f| %>
-  <div class="col-auto flex-grow-1">
-    <%= f.label :name, class: "visually-hidden" %>
-    <%= f.text_field :name, placeholder: "Todo match_series", class: "form-control" %>
-  </div>
-
-  <div class="col-auto">
-    <%= f.submit "Save", class: "btn btn-primary" %>
+  <div class="mt-4 w-full">
+    <%= f.submit class: "w-full text-center p-2 bg-indigo-500 text-white rounded cursor-pointer" %>
   </div>
 <% end %>

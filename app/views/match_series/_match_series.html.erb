@@ -1,12 +1,17 @@
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" id="row-<%= match_series.id %>">
   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
     <%= match_series.name %>
   </th>
   <td class="px-6 py-4">
     <%= match_series.count %>
   </td>
-  <td class="px-6 py-4">
-    <%= button_to "remove", 
+  <td class="px-6 py-4 flex">
+    <%= button_to "✏️", 
+      edit_match_series_path(match_series),
+      method: :get,
+      data: { turbo_frame: "modal" }
+    %>
+    <%= button_to "🗑️", 
       match_series_path(match_series),
       method: :delete
     %>

@@ -1,13 +1,14 @@
-<h2 class="text-3xl font-semibold m-8"> 
-  Series
-</h2>
-
-<%= link_to "New match series",
-            new_match_series_path,
-            class: "btn btn-primary",
-            data: { turbo_frame: "new_match_series" } %>
-
- <%= turbo_frame_tag "new_match_series" %>
+<div class="flex items-center m-8">
+    <h2 class="text-3xl font-semibold flex-grow"> 
+        Series
+    </h2>
+    
+    <%= button_to "New match series",
+        new_match_series_path,
+        class: "text-center p-2 bg-indigo-500 text-white rounded",
+        method: :get,
+        data: { turbo_frame: "modal" } %>
+</div>
 
 <div class="relative overflow-x-auto m-8">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
