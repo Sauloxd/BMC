@@ -1,0 +1,31 @@
+<h2 class="text-3xl font-semibold m-8"> 
+  Series
+</h2>
+
+<%= link_to "New match series",
+            new_match_series_path,
+            class: "btn btn-primary",
+            data: { turbo_frame: "new_match_series" } %>
+
+ <%= turbo_frame_tag "new_match_series" %>
+
+<div class="relative overflow-x-auto m-8">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-indigo-500 uppercase bg-indigo-100">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Players
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody id="match_series_tbody">
+          <%= render @match_series %>
+        </tbody>
+    </table>
+</div>

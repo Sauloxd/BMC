@@ -1,0 +1,17 @@
+
+<% if match_series.errors.any? %>
+  <div class="alert alert-danger">
+    <%= match_series.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_with model: match_series, class: "row g-3 mb-3" do |f| %>
+  <div class="col-auto flex-grow-1">
+    <%= f.label :name, class: "visually-hidden" %>
+    <%= f.text_field :name, placeholder: "Todo match_series", class: "form-control" %>
+  </div>
+
+  <div class="col-auto">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

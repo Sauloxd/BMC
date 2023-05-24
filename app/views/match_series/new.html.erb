@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to "Back to match series", match_series_index_path %>
+
+  <h1 class="my-4">
+    New match series
+  </h1>
+
+  <%= turbo_frame_tag "new_match_series" do %>
+    <%= render "match_series/form", match_series: @match_series %>
+  <% end %>
+</main>

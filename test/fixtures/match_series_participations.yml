@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match_series: one
+  user: one
+
+two:
+  match_series: two
+  user: two
