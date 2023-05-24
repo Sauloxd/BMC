@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_23_114632) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_210825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_114632) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "match_series", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "match_series_participations", force: :cascade do |t|
+    t.bigint "match_series_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_series_id"], name: "index_match_series_participations_on_match_series_id"
+    t.index ["user_id"], name: "index_match_series_participations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,4 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_114632) do
   end
 
   add_foreign_key "comments", "articles"
+  add_foreign_key "match_series_participations", "match_series"
+  add_foreign_key "match_series_participations", "users"
 end
