@@ -69,6 +69,7 @@ group :development do
 
   gem "solargraph"
   gem "ruby-lsp"
+  gem 'pry'
 end
 
 group :test do
