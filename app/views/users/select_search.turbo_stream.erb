@@ -1,5 +1,5 @@
-<%= turbo_stream.prepend "ts_select_search" do %>
-  <div role="listbox" id="users-suggestions" class="mt-2 absolute w-full">
+<%= turbo_stream.prepend "c__user_select_search__#{@element_id}" do %>
+  <div role="listbox" id="users-suggestions__<%= @element_id %>" class="mt-2 absolute w-full">
     <% @users.each do |user| %>
       <div 
         data-action="mousedown->select-search#onClick" 

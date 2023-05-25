@@ -1,5 +1,5 @@
-<%= turbo_stream.prepend "ts_selected_user_search" do %>
-  <%= render "users/selected_user", user: @user %>
+<%= turbo_stream.prepend "c__user_selected_search__#{@element_id}" do %>
+  <%= render "components/user_select_search/multiple_tag", user: @user %>
 <% end%>
 
-<%= turbo_stream.update "ts_select_search" %>
+<%= turbo_stream.update "c__user_select_search__#{@element_id}" %>

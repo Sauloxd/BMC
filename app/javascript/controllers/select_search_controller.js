@@ -3,10 +3,15 @@ import { get } from '@rails/request.js'
 
 export default class extends Controller {
   initialize() {
-    console.log('initialize?')
+    this.id = this.element.getAttribute('id')
+    try {
+      this.rorScope = JSON.parse(this.element.getAttribute('ror-scope'))
+    } catch(e) {
+      this.rorScope = {}
+    }
     this.onChange = this.debounce(this.onChange.bind(this), 300)
   }
-
+ 
   debounce(fn, wait) {
     let timeout;
     return function() {
@@ -24,16 +29,17 @@ export default class extends Controller {
   }
 
   onChange(e) {
-    const selectedUsers = document
-      .getElementById('js__selected-users-container')
-      .querySelectorAll('.js-selected-users')
+    if(e.target.value === "") return;
 
+    const selectedUsers = this.element.querySelectorAll('.js__selected-user')
     const excludeIds = Array.from(selectedUsers).map(u => u.getAttribute('value'))
 
     get('/users/select_search', {
       query: {
         query: e.target.value,
         excludes: excludeIds,
+        element_id: this.id,
+        ...this.rorScope,
       },
       responseKind: 'turbo-stream'
     })
@@ -41,13 +47,17 @@ export default class extends Controller {
 
   onRemove(e) {
     const value = e.target.getAttribute('value');
-    document
-      .querySelector(`.js-selected-users[value="${value}"]`)
+    this.element
+      .querySelector(`.js__selected-user[value="${value}"]`)
       .remove();
   }
 
   onClick(e) {
-    get(`/users/selected_user_search?id=${e.target.getAttribute('value')}`, {
+    get(`/users/selected_user_search`, {
+      query: {
+        id: e.target.getAttribute('value'),
+        element_id: this.id,
+      },
       responseKind: 'turbo-stream'
     })
   }

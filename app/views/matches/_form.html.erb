@@ -1,0 +1,17 @@
+<%= form_with model: [match_series, match_series.matches.build], html: { autocomplete: "off" } do |f| %>
+  <div>
+    <div class="flex">
+      <%= render "components/user_select_search/input", 
+        id: "player_a_1", 
+        label: 'Player A - 1',
+        scope: {
+          in_match_series: match_series.id
+        } 
+      %>
+    </div>
+  </div>
+    
+  <div class="mt-4 flex justify-end">
+    <%= f.submit class: "text-center p-2 bg-indigo-500 text-white rounded cursor-pointer" %>
+  </div>
+<% end %>

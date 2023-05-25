@@ -1,0 +1,46 @@
+<div class="flex items-center m-8">
+    <h2 class="text-3xl font-semibold flex-grow"> 
+        <%= @match_series.name %>
+        <p class="text-sm">
+          Total players - <%= @match_series.match_series_participations.count %>
+        </p>
+    </h2>
+    <%= button_to "New match",
+      new_match_series_match_path(@match_series),
+      class: "text-center p-2 bg-indigo-500 text-white rounded",
+      method: :get,
+      data: { turbo_frame: "modal" } %>
+</div>
+
+<div class="relative overflow-x-auto m-8">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-indigo-500 uppercase bg-indigo-100">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Player A - 1
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Player A - 2
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Player B - 1
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Player B - 2
+                </th>
+                 <th scope="col" class="px-6 py-3">
+                    Score A
+                </th>
+                 <th scope="col" class="px-6 py-3">
+                    Score B
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody id="match_series_tbody">
+          
+        </tbody>
+    </table>
+</div>
