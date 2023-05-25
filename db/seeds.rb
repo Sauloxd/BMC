@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+(1..10).each do |i|
+  User.create!(
+    email: "player#{i}@email.com",
+    password: '123456'
+  )
+end
+
+User.create!(
+  email: "admin@admin.com",
+  password: '123456'
+)
+
+(1..10).each do |i|
+  ms = MatchSeries.create!(
+    name: "Series: #{i}"
+  )
+  (1..rand(1..10)).each do
+    ms.match_series_participations.create!(
+      user: User.take
+    )
+  end
+end

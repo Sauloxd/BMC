@@ -1,0 +1,18 @@
+<%= turbo_stream.prepend "ts_select_search" do %>
+  <div role="listbox" id="users-suggestions" class="mt-2 absolute w-full">
+    <% @users.each do |user| %>
+      <div 
+        data-action="mousedown->select-search#onClick" 
+        role="option" 
+        value="<%= user.id %>"
+        class="border border-indigo-300 py-0.5 px-2 bg-white cursor-pointer hover:bg-indigo-100
+          <%= "border-b-0" unless user == @users.last  %>
+          <%= "border-b rounded-b" if user == @users.last %>
+          <%= "rounded-t" if user == @users.first %>
+        "
+      >
+        <%= user.email %>
+      </div>
+    <% end %>
+  </div>
+<% end%>

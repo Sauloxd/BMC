@@ -30,6 +30,8 @@ class MatchSeriesController < ApplicationController
 
   def create
     @match_series = MatchSeries.new(match_series_params)
+    @match_series.match_series_participations.build(params[:user_ids].map{|id| { user_id: id } })
+    
     if @match_series.save
       respond_to do |format|
         format.html { redirect_to match_series_path }

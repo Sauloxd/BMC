@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :match_series
 
+  get "/users/select_search" => "users#select_search"
+  get "/users/selected_user_search" => "users#selected_user_search"
+  
   resources :articles do
     resources :comments
   end
