@@ -39,14 +39,15 @@ export default class extends Controller {
     })
   }
 
-  onClick(e) {
-    get(`/users/selected_user_search?id=${e.target.getAttribute('value')}`, {
-      responseKind: 'turbo-stream'
-    })
+  onRemove(e) {
+    const value = e.target.getAttribute('value');
+    document
+      .querySelector(`.js-selected-users[value="${value}"]`)
+      .remove();
   }
 
-  onBlur(e) {
-    get(`/users/select_search?state=reset`, {
+  onClick(e) {
+    get(`/users/selected_user_search?id=${e.target.getAttribute('value')}`, {
       responseKind: 'turbo-stream'
     })
   }

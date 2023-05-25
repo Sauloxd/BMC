@@ -1,9 +1,5 @@
 <%= turbo_stream.prepend "ts_selected_user_search" do %>
-  <div class="js-selected-users flex" value="<%= @user.id %>" >
-    <div>
-      <%= @user.email %>
-    </div>
-    <div> 🗑️ </div>
-  </div>
-  <%= check_box_tag "user_ids[]", @user.id, true, id: @user.id, class: 'none' %>
+  <%= render "users/selected_user", user: @user %>
 <% end%>
+
+<%= turbo_stream.update "ts_select_search" %>

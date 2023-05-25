@@ -1,0 +1,7 @@
+<div class="js-selected-users flex" value="<%= user.id %>" >
+  <div>
+    <%= user.email %>
+  </div>
+  <div data-action="click->select-search#onRemove" value="<%= user.id %>"> 🗑️ </div>
+  <%= hidden_field_tag "user_ids[]", user.id, id: user.id %>
+</div>

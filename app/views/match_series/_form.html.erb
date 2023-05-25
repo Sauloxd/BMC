@@ -1,4 +1,4 @@
-<%= form_with model: match_series do |f| %>
+<%= form_with model: match_series, html: { autocomplete: "off" } do |f| %>
   <div>
     <%= f.label :name, class: {
       "text-sm block" => true,
@@ -21,30 +21,23 @@
 
 
     <div data-controller="select-search" class="relative">
-      <%= f.label :query, class: {
-        "text-sm block mt-4" => true,
-        "text-red-400" => match_series.errors[:name].present?,
-      } %>
-      <%= f.text_field :query,
-        class: {
-          "rounded placeholder:text-slate-200 relative z-10" =>  true,
-          "border-indigo-300" => match_series.errors[:name].empty?,
-          "border-red-400" => match_series.errors[:name].present?
-        },
-        data: {
-          action: "
-            select-search#onChange
-            blur->select-search#onBlur
-            focus->select-search#onChange
-          "
-        },
-        aria: {
-          owns: 'users-suggestions'
-        }
-      %>
+      <label for="query" class="text-sm block mt-4">Participants</label>
+      <input type="text"
+        id="query"
+        aria-owns="users-suggestions"
+        class="rounded placeholder:text-slate-200 relative z-10 border-indigo-300"
+        data-action="
+          select-search#onChange
+          focus->select-search#onChange
+        "
+      >
       <%= turbo_frame_tag "ts_select_search"%>
       <div id="js__selected-users-container">
-        <%= turbo_frame_tag "ts_selected_user_search" %>
+        <%= turbo_frame_tag "ts_selected_user_search" do %>
+          <%  @match_series_participations&.each do |participation| %>
+            <%= render "users/selected_user", user: participation.user %>
+          <% end %>
+        <% end %>
       </div>
     </div>
    

@@ -5,7 +5,8 @@ class UsersController < ApplicationController
     else
       User.all
     end
-    @users = @users.where.not(id: exclude_params).by_email(params[:query]) if params[:query].present?
+    @users = @users.where.not(id: exclude_params)
+    @users = @users.by_email(params[:query]) if params[:query].present?
     respond_to do |format|
       format.turbo_stream
     end
