@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :match_series
+  resources :match_series do 
+    resources :matches
+  end
 
   get "/users/select_search" => "users#select_search"
   get "/users/selected_user_search" => "users#selected_user_search"

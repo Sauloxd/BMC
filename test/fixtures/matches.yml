@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match_series: one
+  score_a: 1
+  score_b: 1
+  score_tiebreak_a: 1
+  score_tiebreak_b: 1
+
+two:
+  match_series: two
+  score_a: 1
+  score_b: 1
+  score_tiebreak_a: 1
+  score_tiebreak_b: 1

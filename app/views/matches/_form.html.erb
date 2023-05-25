@@ -1,12 +1,43 @@
-<%= form_with model: [match_series, match_series.matches.build], html: { autocomplete: "off" } do |f| %>
+<%= form_with model: [match_series, match], html: { autocomplete: "off" } do |f| %>
   <div>
-    <div class="flex">
+    <div class="flex relative z-10">
+      <div class="mr-2">
+        <%= render "components/user_select_search/input", 
+          element_id: "player_a_1", 
+          label: 'Player A - 1',
+          scope: {
+            in_match_series: match_series.id
+          },
+          user: match.player_a_1
+        %>
+      </div>
       <%= render "components/user_select_search/input", 
-        id: "player_a_1", 
-        label: 'Player A - 1',
+        element_id: "player_a_2", 
+        label: 'Player A - 2',
         scope: {
           in_match_series: match_series.id
-        } 
+        },
+        user: match.player_a_2
+      %>
+    </div>
+    <div class="flex">
+      <div class="mr-2">
+        <%= render "components/user_select_search/input", 
+          element_id: "player_b_1", 
+          label: 'Player B - 1',
+          scope: {
+            in_match_series: match_series.id
+          },
+          user: match.player_b_1
+        %>
+      </div>
+      <%= render "components/user_select_search/input", 
+        element_id: "player_b_2", 
+        label: 'Player B - 2',
+        scope: {
+          in_match_series: match_series.id
+        },
+        user: match.player_b_2
       %>
     </div>
   </div>

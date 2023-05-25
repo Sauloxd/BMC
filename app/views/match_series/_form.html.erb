@@ -20,9 +20,10 @@
     <% end %>
 
     <%= render "components/user_select_search/input", 
-      id: "participant_ids", 
+      element_id: "participant_ids", 
       users: User.where(id: @match_series_participations.select(:user_id)),
-      label: "Participants"
+      label: "Participants",
+      multiple: true
     %>
   </div>
 

@@ -7,15 +7,23 @@ class MatchSeriesController < ApplicationController
       .order(created_at: :desc)
   end
 
+  def show
+    @match_series = MatchSeries.find(params[:id])
+  end
+
   def edit
     @match_series = MatchSeries.find(params[:id]) 
     @match_series_participations = @match_series.match_series_participations.includes(:user)
   end
 
   def update
-    @match_series = MatchSeries.find(params[:id]) 
-    @match_series_participations = @match_series.match_series_participations.includes(:user)
-
+    @match_series = MatchSeries.find(params[:id])
+    current_user_ids = @match_series.match_series_participations.pluck(:user_id)
+    to_be_created = (params[:participant_ids] || []) - current_user_ids
+    to_be_deleted = current_user_ids - (params[:participant_ids] || [])
+    @match_series.match_series_participations.where(user_id: to_be_deleted).delete_all
+    @match_series.match_series_participations.build(to_be_created.map {|u| { user_id: u }})
+    
     if @match_series.update(match_series_params)
       respond_to do |format|
         format.html { redirect_to match_series_path }
@@ -60,8 +68,8 @@ class MatchSeriesController < ApplicationController
   end
 
   def user_ids_params
-    return if params[:user_ids].nil?
+    return if params[:participant_ids].nil?
     
-    params[:user_ids].map{|id| { user_id: id } }
+    params[:participant_ids].map{|id| { user_id: id } }
   end
 end

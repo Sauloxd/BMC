@@ -1,20 +1,27 @@
-<div data-controller="select-search" class="relative mr-2" id="<%= id %>" ror-scope="<%= local_assigns[:scope] ? scope.to_json : '{}' %>">
-  <label for="user-select-search__<%= id %>" class="text-sm block mt-4"><%= label %></label>
+<div data-controller="select-search" 
+  class="relative" 
+  id="<%= element_id %>" 
+  ror-scope="<%= local_assigns[:scope] ? scope.to_json : '{}' %>"
+  ror-multiple="<%= local_assigns[:multiple] || 'false' %>"
+>
+  <label for="user-select-search__<%= element_id %>" class="text-sm block mt-4"><%= label %></label>
+  
   <input type="text"
-    id="user-select-search__<%= id %>"
-    class="rounded placeholder:text-slate-200 relative z-10 border-indigo-300 w-full"
-    aria-owns="users-suggestions__<%= id %>"
+    id="user-select-search__<%= element_id %>"
+    class="rounded placeholder:text-slate-200 relative border-indigo-300 w-full"
+    aria-owns="users-suggestions__<%= element_id %>"
     data-action="
       select-search#onChange
       focus->select-search#onChange
     "
   >
-  <%= turbo_frame_tag "c__user_select_search__#{id}"%>
-  <div id="js__selected-users-container__<%= id %>">
-    <%= turbo_frame_tag "c__user_selected_search__#{id}" do %>
+  <%= turbo_frame_tag "c__user_select_search__#{element_id}"%>
+ 
+  <div id="js__selected-users-container__<%= element_id %>">
+    <%= turbo_frame_tag "c__user_selected_search__#{element_id}" do %>
       <% if local_assigns[:users] %>
-        <% users&.each do |user| %>
-          <%= render "components/user_select_search/multiple_tag", user: user %>
+        <% users.each do |user| %>
+          <%= render "components/user_select_search/multiple_tag", user: user, element_id: element_id %>
         <% end %>
       <% end %>
     <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_23_210825) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_25_183705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_210825) do
     t.index ["user_id"], name: "index_match_series_participations_on_user_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "match_series_id"
+    t.integer "score_a"
+    t.integer "score_b"
+    t.integer "score_tiebreak_a"
+    t.integer "score_tiebreak_b"
+    t.datetime "played_at", null: false
+    t.bigint "player_a_1_id"
+    t.bigint "player_a_2_id"
+    t.bigint "player_b_1_id"
+    t.bigint "player_b_2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_series_id"], name: "index_matches_on_match_series_id"
+    t.index ["player_a_1_id"], name: "index_matches_on_player_a_1_id"
+    t.index ["player_a_2_id"], name: "index_matches_on_player_a_2_id"
+    t.index ["player_b_1_id"], name: "index_matches_on_player_b_1_id"
+    t.index ["player_b_2_id"], name: "index_matches_on_player_b_2_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,4 +82,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_210825) do
   add_foreign_key "comments", "articles"
   add_foreign_key "match_series_participations", "match_series"
   add_foreign_key "match_series_participations", "users"
+  add_foreign_key "matches", "match_series"
+  add_foreign_key "matches", "users", column: "player_a_1_id"
+  add_foreign_key "matches", "users", column: "player_a_2_id"
+  add_foreign_key "matches", "users", column: "player_b_1_id"
+  add_foreign_key "matches", "users", column: "player_b_2_id"
 end

@@ -4,6 +4,7 @@ import { get } from '@rails/request.js'
 export default class extends Controller {
   initialize() {
     this.id = this.element.getAttribute('id')
+    this.multiple = this.element.getAttribute('ror-multiple')
     try {
       this.rorScope = JSON.parse(this.element.getAttribute('ror-scope'))
     } catch(e) {
@@ -39,6 +40,7 @@ export default class extends Controller {
         query: e.target.value,
         excludes: excludeIds,
         element_id: this.id,
+        multiple: this.multiple || false,
         ...this.rorScope,
       },
       responseKind: 'turbo-stream'
