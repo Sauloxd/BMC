@@ -2,34 +2,43 @@
   <h2 class="text-3xl font-semibold flex-grow mb-8"> 
     Your profile
   </h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, autocomplete: "off" }) do |f| %>
     <div>
-      <%= f.label :email, class: {
+      <%= f.label :name, class: {
         "text-sm block" => true,
-        "text-red-400" => alert.present?,
       } %>
-      <%= f.email_field :email, 
-        autofocus: true, 
-        autocomplete: "email",
-        placeholder: 'your@email.com',
+      <%= f.text_field :name, 
+        autofocus: true,
         class: {
           "rounded placeholder:text-slate-200" =>  true,
-          "border-indigo-300" => alert.nil?,
-          "border-red-400" => alert.present?
+          "border-indigo-300" => true,
         }  
       %>
 
       <div class="mt-4">
+        <%= f.label :email, class: {
+          "text-sm block" => true,
+        } %>
+        <%= f.email_field :email, 
+          autofocus: true, 
+          autocomplete: "email",
+          placeholder: 'your@email.com',
+          class: {
+            "rounded placeholder:text-slate-200" =>  true,
+            "border-indigo-300" => true,
+          }  
+        %>
+      </div>
+
+      <div class="mt-4">
         <%= f.label :password, class: {
           "text-sm block" => true,
-          "text-red-400": alert.present?
         } %>
         <%= f.password_field :password, 
           autocomplete: "new-password", 
           placeholder: '*********', 
           class: { 
             "rounded border-indigo-300 rounded placeholder:text-slate-200" => true,
-            "border-red-400": alert.present?
           }
         %>
       </div>
@@ -44,24 +53,28 @@
           autocomplete: "new-password",
           class: { 
             "rounded border-indigo-300 rounded placeholder:text-slate-200" => true,
-            "border-red-400": alert.present?
           }
         %>
       </div>
       <div class="mt-4">
         <%= f.label :current_password, class: {
           "text-sm block" => true,
-          "text-red-400": alert.present?
+          "text-red-400": resource.errors.full_messages_for(:current_password).present?
         } %>
         <%= f.password_field :current_password, 
           placeholder: '*********', 
           autocomplete: "current-password",
           class: { 
             "rounded border-indigo-300 rounded placeholder:text-slate-200" => true,
-            "border-red-400": alert.present?
+            "border-red-400": resource.errors.full_messages_for(:current_password).present?
           }
         %>
       </div>
+      <% if resource.errors.full_messages_for(:current_password).present? %>
+        <div class="mt-2 text-xs text-red-400"> 
+          To update any field you need to add current password!
+        </div>
+      <% end %>
     </div>
     
     <div class="mt-4" >
