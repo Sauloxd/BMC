@@ -58,12 +58,12 @@
           <p class="text-sm font-semibold">
             Hello <a class="hover:text-indigo-500 rounded cursor-pointer"> <%= current_user.email %></a> 👋
           </p>
-          <a href="" class="cursor-pointer" >
+          <%= link_to edit_user_registration_path, class: "cursor-pointer" do %> 
             <img
               class="shadow rounded-full h-8 w-8" 
               src="https://lh3.googleusercontent.com/ogw/AOLn63HSPYTD4PWjX67jvQetsSzRogae75Y7iPkV-tWrUg=s32-c-mo" 
               alt="Your profile picture">
-          </a>
+          <% end %>
         </div>
         <div class="grow bg-slate-100 overflow-auto">
           <%= yield %>

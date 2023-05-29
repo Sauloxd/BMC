@@ -1,0 +1,71 @@
+<div class="m-8">
+  <h2 class="text-3xl font-semibold flex-grow mb-8"> 
+    Your profile
+  </h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div>
+      <%= f.label :email, class: {
+        "text-sm block" => true,
+        "text-red-400" => alert.present?,
+      } %>
+      <%= f.email_field :email, 
+        autofocus: true, 
+        autocomplete: "email",
+        placeholder: 'your@email.com',
+        class: {
+          "rounded placeholder:text-slate-200" =>  true,
+          "border-indigo-300" => alert.nil?,
+          "border-red-400" => alert.present?
+        }  
+      %>
+
+      <div class="mt-4">
+        <%= f.label :password, class: {
+          "text-sm block" => true,
+          "text-red-400": alert.present?
+        } %>
+        <%= f.password_field :password, 
+          autocomplete: "new-password", 
+          placeholder: '*********', 
+          class: { 
+            "rounded border-indigo-300 rounded placeholder:text-slate-200" => true,
+            "border-red-400": alert.present?
+          }
+        %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :password_confirmation, class: {
+          "text-sm block" => true,
+          "text-red-400": alert.present?
+        } %>
+        <%= f.password_field :password_confirmation, 
+          placeholder: '*********', 
+          autocomplete: "new-password",
+          class: { 
+            "rounded border-indigo-300 rounded placeholder:text-slate-200" => true,
+            "border-red-400": alert.present?
+          }
+        %>
+      </div>
+      <div class="mt-4">
+        <%= f.label :current_password, class: {
+          "text-sm block" => true,
+          "text-red-400": alert.present?
+        } %>
+        <%= f.password_field :current_password, 
+          placeholder: '*********', 
+          autocomplete: "current-password",
+          class: { 
+            "rounded border-indigo-300 rounded placeholder:text-slate-200" => true,
+            "border-red-400": alert.present?
+          }
+        %>
+      </div>
+    </div>
+    
+    <div class="mt-4" >
+      <%= f.submit "Update", class: "w-64 text-center p-2 bg-indigo-500 text-white rounded cursor-pointer" %>
+    </div>
+  <% end %>
+</div>
