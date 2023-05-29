@@ -9,18 +9,20 @@ class MatchSeriesController < ApplicationController
 
   def show
     @match_series = MatchSeries.find(params[:id])
+    @matches = @match_series.matches
   end
 
   def edit
     @match_series = MatchSeries.find(params[:id]) 
     @match_series_participations = @match_series.match_series_participations.includes(:user)
+    @players = User.where(id: @match_series_participations.select(:user_id))
   end
 
   def update
     @match_series = MatchSeries.find(params[:id])
     current_user_ids = @match_series.match_series_participations.pluck(:user_id)
-    to_be_created = (params[:participant_ids] || []) - current_user_ids
-    to_be_deleted = current_user_ids - (params[:participant_ids] || [])
+    to_be_created = (params[:player_ids] || []) - current_user_ids
+    to_be_deleted = current_user_ids - (params[:player_ids] || [])
     @match_series.match_series_participations.where(user_id: to_be_deleted).delete_all
     @match_series.match_series_participations.build(to_be_created.map {|u| { user_id: u }})
     
@@ -37,6 +39,7 @@ class MatchSeriesController < ApplicationController
   def new
     @match_series = MatchSeries.new
     @match_series_participations = @match_series.match_series_participations
+    @players = User.where(id: @match_series_participations.select(:user_id))
   end
 
   def create
@@ -68,8 +71,8 @@ class MatchSeriesController < ApplicationController
   end
 
   def user_ids_params
-    return if params[:participant_ids].nil?
+    return if params[:player_ids].nil?
     
-    params[:participant_ids].map{|id| { user_id: id } }
+    params[:player_ids].map{|id| { user_id: id } }
   end
 end

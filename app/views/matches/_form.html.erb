@@ -1,44 +1,53 @@
 <%= form_with model: [match_series, match], html: { autocomplete: "off" } do |f| %>
+  <%= hidden_field_tag 'match[match_series_id]', match_series.id %>
   <div>
     <div class="flex relative z-10">
-      <div class="mr-2">
+      <div class="flex-1 mr-2">
         <%= render "components/user_select_search/input", 
-          element_id: "player_a_1", 
+          element_id: "match[player_a_1_id]", 
           label: 'Player A - 1',
           scope: {
             in_match_series: match_series.id
           },
-          user: match.player_a_1
+          user: match.player_a_1,
+          errors: @match.errors.full_messages_for(:player_a_1)
         %>
       </div>
-      <%= render "components/user_select_search/input", 
-        element_id: "player_a_2", 
-        label: 'Player A - 2',
-        scope: {
-          in_match_series: match_series.id
-        },
-        user: match.player_a_2
-      %>
+      <div class="flex-1"> 
+        <%= render "components/user_select_search/input", 
+          element_id: "match[player_a_2_id]", 
+          label: 'Player A - 2',
+          scope: {
+            in_match_series: match_series.id
+          },
+          user: match.player_a_2,
+          errors: @match.errors.full_messages_for(:player_a_2)
+        %>
+      </div>
     </div>
     <div class="flex">
-      <div class="mr-2">
+      <div class="mr-2 flex-1">
         <%= render "components/user_select_search/input", 
-          element_id: "player_b_1", 
+          element_id: "match[player_b_1_id]", 
           label: 'Player B - 1',
           scope: {
             in_match_series: match_series.id
           },
-          user: match.player_b_1
+          user: match.player_b_1,
+          errors: @match.errors.full_messages_for(:player_b_1)
         %>
       </div>
-      <%= render "components/user_select_search/input", 
-        element_id: "player_b_2", 
-        label: 'Player B - 2',
-        scope: {
-          in_match_series: match_series.id
-        },
-        user: match.player_b_2
-      %>
+      <div class="flex-1"> 
+        <%= render "components/user_select_search/input", 
+          element_id: "match[player_b_2_id]", 
+          label: 'Player B - 2',
+          scope: {
+            in_match_series: match_series.id
+          },
+          user: match.player_b_2,
+          errors: @match.errors.full_messages_for(:player_b_2)
+        %>
+      </div>
     </div>
   </div>
     

@@ -1,5 +1,17 @@
-<%= turbo_stream.prepend "c__user_selected_search__#{@element_id}" do %>
-  <%= render "components/user_select_search/multiple_tag", user: @user, element_id: @element_id %>
-<% end%>
+<% if params[:multiple] == 'true' %>
+  <%= turbo_stream.prepend "c__user_selected_search__#{@element_id}" do %>
+    <%= render "components/user_select_search/multiple_tag", user: @user, element_id: @element_id %>
+  <% end%>
+<% end %>
+<% if params[:multiple] == 'false' %>
+  <%= turbo_stream.replace "c__user-select-search-input__#{@element_id}" do %>
+    <%= render "components/user_select_search/input", 
+      element_id: @element_id, 
+      user: @user,
+      label: params[:label]
+    %>
+  <% end %>
+<% end %>
 
+<!-- Close dropdown -->
 <%= turbo_stream.update "c__user_select_search__#{@element_id}" %>

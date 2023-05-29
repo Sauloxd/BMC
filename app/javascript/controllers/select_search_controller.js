@@ -1,10 +1,11 @@
-import { Controller } from "@hotwired/stimulus"
+import Controller from "./base_controller"
 import { get } from '@rails/request.js'
 
 export default class extends Controller {
   initialize() {
     this.id = this.element.getAttribute('id')
     this.multiple = this.element.getAttribute('ror-multiple')
+    this.label = this.element.getAttribute('ror-label')
     try {
       this.rorScope = JSON.parse(this.element.getAttribute('ror-scope'))
     } catch(e) {
@@ -41,6 +42,7 @@ export default class extends Controller {
         excludes: excludeIds,
         element_id: this.id,
         multiple: this.multiple || false,
+        label: this.label,
         ...this.rorScope,
       },
       responseKind: 'turbo-stream'
@@ -52,6 +54,15 @@ export default class extends Controller {
     this.element
       .querySelector(`.js__selected-user[value="${value}"]`)
       .remove();
+
+    this.element
+      .querySelector(this.query_id(`#user-select-search__${this.id}`))
+      .classList
+      .remove('hidden')
+    
+    this.element
+      .querySelector(this.query_id(`#user-select-search__${this.id}`))
+      .focus()
   }
 
   onClick(e) {
@@ -59,6 +70,8 @@ export default class extends Controller {
       query: {
         id: e.target.getAttribute('value'),
         element_id: this.id,
+        multiple: this.multiple,
+        label: this.label,
       },
       responseKind: 'turbo-stream'
     })
