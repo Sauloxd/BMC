@@ -61,7 +61,7 @@
           <%= link_to edit_user_registration_path, class: "cursor-pointer" do %> 
             <img
               class="shadow rounded-full h-8 w-8" 
-              src="https://lh3.googleusercontent.com/ogw/AOLn63HSPYTD4PWjX67jvQetsSzRogae75Y7iPkV-tWrUg=s32-c-mo" 
+              src="<%= current_user.avatar&.url %>" 
               alt="Your profile picture">
           <% end %>
         </div>

@@ -4,6 +4,13 @@
   </h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, autocomplete: "off" }) do |f| %>
     <div>
+      
+      <%= f.label :avatar, class: "relative overflow-hidden cursor-pointer w-36 h-36 ml-12 mb-8 bg-slate-200 block rounded-full" do %>
+        <img class="w-full h-full" src="<%= resource.avatar.url %>" alt="edit your profile picture">
+        <div class="absolute inset-x-1/2 bottom-0"> ✏️ </div>
+      <% end %>
+      <%= f.file_field :avatar, class: 'hidden' %>
+
       <%= f.label :name, class: {
         "text-sm block" => true,
       } %>
