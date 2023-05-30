@@ -1,6 +1,9 @@
 <%= form_with model: [match_series, match], html: { autocomplete: "off" } do |f| %>
   <%= hidden_field_tag 'match[match_series_id]', match_series.id %>
   <div>
+    <h3 class="text-indigo-500 uppercase mb-2 font-semibold">
+      Team A
+    </h3>
     <div class="flex relative z-10">
       <div class="flex-1 mr-2">
         <%= render "components/user_select_search/input", 
@@ -13,7 +16,7 @@
           errors: @match.errors.full_messages_for(:player_a_1)
         %>
       </div>
-      <div class="flex-1"> 
+      <div class="flex-1 mr-2"> 
         <%= render "components/user_select_search/input", 
           element_id: "match[player_a_2_id]", 
           label: 'Player A - 2',
@@ -24,7 +27,22 @@
           errors: @match.errors.full_messages_for(:player_a_2)
         %>
       </div>
+      <div>
+        <%= f.label :score_a, class: {
+          "text-sm block" => true,
+          "text-red-400" => @match.errors.full_messages_for(:score_a).present?,
+        } %>
+        <%= f.number_field :score_a,  min: 0, max: 7, value: 0, class: {
+          "rounded placeholder:text-slate-200 w-14" =>  true,
+          "border-indigo-300" => @match.errors.full_messages_for(:score_a).empty?,
+          "border-red-400" => @match.errors.full_messages_for(:score_a).present?
+        } %>
+      </div>
     </div>
+    <p class="text-center text-indigo-500 uppercase mb-2 font-semibold my-2"> VS </p>
+    <h3 class="text-indigo-500 uppercase mb-2 font-semibold">
+      Team B
+    </h3>
     <div class="flex">
       <div class="mr-2 flex-1">
         <%= render "components/user_select_search/input", 
@@ -37,7 +55,7 @@
           errors: @match.errors.full_messages_for(:player_b_1)
         %>
       </div>
-      <div class="flex-1"> 
+      <div class="flex-1 mr-2"> 
         <%= render "components/user_select_search/input", 
           element_id: "match[player_b_2_id]", 
           label: 'Player B - 2',
@@ -47,6 +65,17 @@
           user: match.player_b_2,
           errors: @match.errors.full_messages_for(:player_b_2)
         %>
+      </div>
+      <div>
+        <%= f.label :score_b, class: {
+          "text-sm block" => true,
+          "text-red-400" => @match.errors.full_messages_for(:score_b).present?,
+        } %>
+        <%= f.number_field :score_b,  min: 0, max: 7, value: 0, class: {
+          "rounded placeholder:text-slate-200 w-14" =>  true,
+          "border-indigo-300" => @match.errors.full_messages_for(:score_b).empty?,
+          "border-red-400" => @match.errors.full_messages_for(:score_b).present?
+        } %>
       </div>
     </div>
   </div>

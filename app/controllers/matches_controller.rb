@@ -20,6 +20,14 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:match_series_id, :player_a_1_id, :player_a_2_id, :player_b_1_id, :player_b_2_id)
+    params.require(:match).permit(
+      :match_series_id, 
+      :player_a_1_id, 
+      :player_a_2_id, 
+      :player_b_1_id, 
+      :player_b_2_id,
+      :score_a,
+      :score_b
+    )
   end
 end
