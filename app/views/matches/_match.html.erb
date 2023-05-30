@@ -1,5 +1,5 @@
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 px-2" id="row-<%= match.id %>">
-    <td class="px-2 py-4 flex">
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" id="row-<%= match.id %>">
+    <td class="px-2 py-4 pl-4 flex">
         <%= button_to "✏️", 
         edit_match_series_match_path(match.match_series_id, match.id),
         method: :get,
@@ -25,7 +25,7 @@
     <td class="px-2 py-4">
         <%= match.player_b_2.email %>
     </td>
-    <td class="px-2 py-4">
+    <td class="px-2 py-4 pr-4">
         <%= match.score_b || 0 %>
     </td>
 </tr>

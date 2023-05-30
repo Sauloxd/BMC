@@ -1,5 +1,5 @@
 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" id="row-<%= match_series.id %>">
-  <td class="px-6 py-4 flex">
+  <td class="px-2 py-4 pl-4 flex">
     <%= button_to "✏️", 
       edit_match_series_path(match_series),
       method: :get,
@@ -10,10 +10,10 @@
       method: :delete
     %>
   </td>
-  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-full">
+  <td scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-full">
     <%= link_to match_series.name, match_series_path(match_series), class: "hover:text-indigo-500 rounded cursor-pointer" %>
   </td>
-  <td class="px-6 py-4">
+  <td class="px-2 py-4 pr-4">
     <%= match_series.count %>
   </td>
 </tr>

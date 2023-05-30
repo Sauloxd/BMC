@@ -2,17 +2,7 @@ import Controller from "./base_controller"
 import { get } from '@rails/request.js'
 
 export default class extends Controller {
-  initialize() {
-    this.id = this.element.getAttribute('id')
-    this.multiple = this.element.getAttribute('ror-multiple')
-    this.label = this.element.getAttribute('ror-label')
-    try {
-      this.rorScope = JSON.parse(this.element.getAttribute('ror-scope'))
-    } catch(e) {
-      this.rorScope = {}
-    }
-    this.onChange = this.debounce(this.onChange.bind(this), 300)
-  }
+  initialize() {}
  
   debounce(fn, wait) {
     let timeout;
@@ -28,6 +18,11 @@ export default class extends Controller {
 
   connect() {
     console.log('connected selectSearch')
+    this.id = this.element.getAttribute('id')
+    this.multiple = this.element.getAttribute('ror-multiple')
+    this.label = this.element.getAttribute('ror-label')
+    this.rorScope = this.element.getAttribute('ror-scope')
+    this.onChange = this.debounce(this.onChange.bind(this), 300)
   }
 
   onChange(e) {
@@ -35,7 +30,6 @@ export default class extends Controller {
 
     const selectedUsers = this.element.querySelectorAll('.js__selected-user')
     const excludeIds = Array.from(selectedUsers).map(u => u.getAttribute('value'))
-
     get('/users/select_search', {
       query: {
         query: e.target.value,
@@ -43,7 +37,7 @@ export default class extends Controller {
         element_id: this.id,
         multiple: this.multiple || false,
         label: this.label,
-        ...this.rorScope,
+        scope: this.rorScope,
       },
       responseKind: 'turbo-stream'
     })
@@ -72,6 +66,7 @@ export default class extends Controller {
         element_id: this.id,
         multiple: this.multiple,
         label: this.label,
+        scope: this.rorScope,
       },
       responseKind: 'turbo-stream'
     })
