@@ -9,7 +9,7 @@ class MatchSeriesController < ApplicationController
 
   def show
     @match_series = MatchSeries.find(params[:id])
-    @matches = @match_series.matches
+    @matches = @match_series.matches.order(created_at: :desc)
   end
 
   def edit

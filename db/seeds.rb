@@ -9,13 +9,15 @@
 (1..10).each do |i|
   User.create!(
     email: "player#{i}@email.com",
-    password: '123456'
+    password: '123456',
+    name: "player #{i}"
   )
 end
 
 User.create!(
   email: "admin@admin.com",
-  password: '123456'
+  password: '123456',
+  name: "admin"
 )
 
 (1..10).each do |i|

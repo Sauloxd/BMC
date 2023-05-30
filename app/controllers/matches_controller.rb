@@ -19,6 +19,32 @@ class MatchesController < ApplicationController
     end
   end
 
+  def edit
+    @match_series = MatchSeries.find(params[:match_series_id])
+    @match = @match_series.matches.find(params[:id])
+    @users = User.where(id: @match_series.match_series_participations.pluck(:user_id))
+  end
+
+  def update
+    @match_series = MatchSeries.find(params[:match_series_id])
+    @match = @match_series.matches.find(params[:id])
+    @users = User.where(id: @match_series.match_series_participations.pluck(:user_id))
+    if @match.update(match_params)
+      respond_to do |format|
+        format.turbo_stream
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @match = Match.find(params[:id])
+    if @match.destroy
+      redirect_to match_series_match_path(@match.match_series_id, @match.id), status: :see_other
+    end
+  end
+
   def match_params
     params.require(:match).permit(
       :match_series_id, 

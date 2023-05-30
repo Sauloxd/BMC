@@ -13,7 +13,7 @@
             in_match_series: match_series.id
           },
           user: match.player_a_1,
-          errors: @match.errors.full_messages_for(:player_a_1)
+          errors: @match.errors.full_messages_for(:player_a_1),
         %>
       </div>
       <div class="flex-1 mr-2"> 
@@ -24,7 +24,7 @@
             in_match_series: match_series.id
           },
           user: match.player_a_2,
-          errors: @match.errors.full_messages_for(:player_a_2)
+          errors: @match.errors.full_messages_for(:player_a_2),
         %>
       </div>
       <div>
@@ -32,7 +32,7 @@
           "text-sm block" => true,
           "text-red-400" => @match.errors.full_messages_for(:score_a).present?,
         } %>
-        <%= f.number_field :score_a,  min: 0, max: 7, value: 0, class: {
+        <%= f.number_field :score_a,  min: 0, max: 7, value: @match.score_a || 0, class: {
           "rounded placeholder:text-slate-200 w-14" =>  true,
           "border-indigo-300" => @match.errors.full_messages_for(:score_a).empty?,
           "border-red-400" => @match.errors.full_messages_for(:score_a).present?
@@ -52,7 +52,7 @@
             in_match_series: match_series.id
           },
           user: match.player_b_1,
-          errors: @match.errors.full_messages_for(:player_b_1)
+          errors: @match.errors.full_messages_for(:player_b_1),
         %>
       </div>
       <div class="flex-1 mr-2"> 
@@ -63,7 +63,7 @@
             in_match_series: match_series.id
           },
           user: match.player_b_2,
-          errors: @match.errors.full_messages_for(:player_b_2)
+          errors: @match.errors.full_messages_for(:player_b_2),
         %>
       </div>
       <div>
@@ -71,7 +71,7 @@
           "text-sm block" => true,
           "text-red-400" => @match.errors.full_messages_for(:score_b).present?,
         } %>
-        <%= f.number_field :score_b,  min: 0, max: 7, value: 0, class: {
+        <%= f.number_field :score_b,  min: 0, max: 7, value: @match.score_b || 0, class: {
           "rounded placeholder:text-slate-200 w-14" =>  true,
           "border-indigo-300" => @match.errors.full_messages_for(:score_b).empty?,
           "border-red-400" => @match.errors.full_messages_for(:score_b).present?

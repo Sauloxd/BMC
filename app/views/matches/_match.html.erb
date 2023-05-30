@@ -1,23 +1,31 @@
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" id="row-<%= match.id %>">
-  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-full">
-      <%= match.player_a_1.email %>
-  </td>
-  <td class="px-6 py-4">
-      <%= match.player_a_2.email %>
-  </td>
-  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-full">
-      <%= match.player_b_1.email %>
-  </td>
-  <td class="px-6 py-4">
-      <%= match.player_b_2.email %>
-  </td>
-  <td class="px-6 py-4">
-      <%= match.score_a || 0 %>
-  </td>
-  <td class="px-6 py-4">
-      <%= match.score_b || 0 %>
-  </td>
-  <td class="px-6 py-4">
-      -
-  </td>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 px-2" id="row-<%= match.id %>">
+    <td class="px-2 py-4 flex">
+        <%= button_to "✏️", 
+        edit_match_series_match_path(match.match_series_id, match.id),
+        method: :get,
+        data: { turbo_frame: "modal" }
+        %>
+        <%= button_to "🗑️", 
+        match_series_match_path(match.match_series_id, match.id),
+        method: :delete
+        %>
+    </td>
+    <td scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <%= match.player_a_1.email %>
+    </td>
+    <td class="px-2 py-4">
+        <%= match.player_a_2.email %>
+    </td>
+    <td class="px-2 py-4">
+        <%= match.score_a || 0 %>
+    </td>
+    <td scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <%= match.player_b_1.email %>
+    </td>
+    <td class="px-2 py-4">
+        <%= match.player_b_2.email %>
+    </td>
+    <td class="px-2 py-4">
+        <%= match.score_b || 0 %>
+    </td>
 </tr>

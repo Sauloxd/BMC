@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "modal" do %>
+  <header class="modal__header">
+    <h2 class="modal__title text-indigo-500" id="form-modal-title">
+      Edit Match
+    </h2>
+    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+  </header>
+  <main class="modal__content pt-4" id="form-modal-content">
+    <%= render "matches/form", match_series: @match_series, match: @match %>
+  </main>
+<% end %>
