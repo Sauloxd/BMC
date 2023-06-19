@@ -3,14 +3,19 @@
     Your profile
   </h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, autocomplete: "off" }) do |f| %>
-    <div>
+    <div data-controller="upload-image">
+      <div class="ml-12 mb-8">
+        <%= f.label :avatar, class: "relative overflow-hidden cursor-pointer w-36 h-36 bg-slate-200 block rounded-full" do %>
+          <img id="upload-image__preview" class="w-full" src="<%= url_for(resource.avatar) || "https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=#{resource.name.first}" %>" alt="edit your profile picture">
+          <div class="absolute inset-x-1/2 bottom-0"> ✏️ </div>
+        <% end %>
+        <div id="upload-image__caption" class="mt-2 text-xs text-red-400 hidden"> 
+          Save to persist changes
+        </div>
+      </div>
       
-      <%= f.label :avatar, class: "relative overflow-hidden cursor-pointer w-36 h-36 ml-12 mb-8 bg-slate-200 block rounded-full" do %>
-        <img class="w-full h-full" src="<%= resource.avatar.url %>" alt="edit your profile picture">
-        <div class="absolute inset-x-1/2 bottom-0"> ✏️ </div>
-      <% end %>
-      <%= f.file_field :avatar, class: 'hidden' %>
-
+      <%= f.file_field :avatar, class: 'hidden', data: { action: 'upload-image#updateTagImage' } %>
+      
       <%= f.label :name, class: {
         "text-sm block" => true,
       } %>
@@ -82,10 +87,9 @@
           To update any field you need to add current password!
         </div>
       <% end %>
-    </div>
-    
-    <div class="mt-4" >
-      <%= f.submit "Update", class: "w-64 text-center p-2 bg-indigo-500 text-white rounded cursor-pointer" %>
+      <div class="mt-4" >
+        <%= f.submit "Update", class: "w-64 text-center p-2 bg-indigo-500 text-white rounded cursor-pointer" %>
+      </div>
     </div>
   <% end %>
 </div>

@@ -18,13 +18,15 @@
         <%= msg %>
       </div>
     <% end %>
-
-    <%= render "components/user_select_search/input", 
-      element_id: "player_ids", 
-      users: players,
-      label: "Players",
-      multiple: true
-    %>
+    <div class="mt-4">
+      <%= render "components/user_select_search/input", 
+        element_id: "player_ids", 
+        users: players,
+        label: "Players",
+        multiple: true
+      %>
+    </div>
+    
   </div>
 
   <div class="mt-4 w-full">

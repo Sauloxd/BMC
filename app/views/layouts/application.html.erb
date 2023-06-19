@@ -59,10 +59,12 @@
             Hello <a class="hover:text-indigo-500 rounded cursor-pointer"> <%= current_user.email %></a> 👋
           </p>
           <%= link_to edit_user_registration_path, class: "cursor-pointer" do %> 
-            <img
-              class="shadow rounded-full h-8 w-8" 
-              src="<%= current_user.avatar&.url %>" 
-              alt="Your profile picture">
+            <div class="relative overflow-hidden cursor-pointer w-8 h-8 bg-slate-200 block rounded-full">
+              <img
+                class="w-full"
+                src="<%= url_for(current_user.avatar) %>" 
+                alt="Your profile picture">
+            </div>
           <% end %>
         </div>
         <div class="grow bg-slate-100 overflow-auto">
