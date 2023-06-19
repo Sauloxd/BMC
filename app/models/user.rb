@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   scope :by_email, -> (email) { where("email ILIKE ?", "%#{email}%") }
   scope :in_match_series, -> (match_series_id) { where(id: MatchSeries.find(match_series_id).match_series_participations.pluck(:user_id)) }
+
+  validates :name, presence: true
 end

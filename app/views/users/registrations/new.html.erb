@@ -2,6 +2,27 @@
   <div class="flex flex-col justify-center justify-items-center">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div>
+        <%= f.label :name, class: {
+          "text-sm block" => true,
+          "text-red-400" => resource.errors[:name].present?,
+        } %>
+        <%= f.text_field :name, 
+          autofocus: true, 
+          placeholder: 'Your name',
+          class: {
+            "rounded placeholder:text-slate-200" =>  true,
+            "border-indigo-300" => resource.errors[:name].empty?,
+            "border-red-400" => resource.errors[:name].present?
+          } 
+        %>
+        <% resource.errors[:name].each do |msg| %>
+          <div class="mt-2 text-xs text-red-400"> 
+            <%= msg %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="mt-4">
         <%= f.label :email, class: {
           "text-sm block" => true,
           "text-red-400" => resource.errors[:email].present?,
