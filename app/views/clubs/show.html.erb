@@ -1,10 +1,12 @@
 <div class="flex items-center m-8">
     <h2 class="text-3xl font-semibold flex-grow"> 
-        Series
+        <%= @club.name %>
+        <p class="text-sm">
+          Total members - <%= @club.memberships.count %>
+        </p>
     </h2>
-    
     <%= button_to "New match series",
-        new_match_series_path,
+        new_club_match_series_path(@club),
         class: "text-center p-2 bg-indigo-500 text-white rounded",
         method: :get,
         data: { turbo_frame: "modal" } %>

@@ -2,8 +2,9 @@ class ClubsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @clubs = Club
-      .has_user(current_user.id)
+    @clubs = Club.has_user(current_user.id)
+    @clubs = Club.all if current_user.email == 'admin@admin.com'
+    @clubs = @clubs
       .joins("LEFT JOIN memberships as mbms ON mbms.club_id = clubs.id")
       .select("clubs.*, count(mbms.id)")
       .group("clubs.id")
@@ -12,8 +13,7 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
-    @match_series = @club.match_series.find(params[:id])
-    @matches = @match_series.matches.order(created_at: :desc)
+    @match_series = @club.match_series
   end
 
   def new

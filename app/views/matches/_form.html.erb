@@ -1,5 +1,5 @@
 <%= form_with model: [match_series, match], html: { autocomplete: "off" } do |f| %>
-  <%= hidden_field_tag 'match[match_series_id]', match_series.id %>
+  <%= hidden_field_tag 'match[match_series_id]', match.match_series_id %>
   <div>
     <h3 class="text-indigo-500 uppercase mb-2 font-semibold">
       Team A
@@ -10,7 +10,7 @@
           element_id: "match[player_a_1_id]", 
           label: 'Player A - 1',
           scope: {
-            in_match_series: match_series.id
+            in_match_series: match.match_series_id
           },
           user: match.player_a_1,
           errors: @match.errors.full_messages_for(:player_a_1)
@@ -21,7 +21,7 @@
           element_id: "match[player_a_2_id]", 
           label: 'Player A - 2',
           scope: {
-            in_match_series: match_series.id
+            in_match_series: match.match_series_id
           },
           user: match.player_a_2,
           errors: @match.errors.full_messages_for(:player_a_2)
@@ -49,7 +49,7 @@
           element_id: "match[player_b_1_id]", 
           label: 'Player B - 1',
           scope: {
-            in_match_series: match_series.id
+            in_match_series: match.match_series_id
           },
           user: match.player_b_1,
           errors: @match.errors.full_messages_for(:player_b_1)
@@ -60,7 +60,7 @@
           element_id: "match[player_b_2_id]", 
           label: 'Player B - 2',
           scope: {
-            in_match_series: match_series.id
+            in_match_series: match.match_series_id
           },
           user: match.player_b_2,
           errors: @match.errors.full_messages_for(:player_b_2)

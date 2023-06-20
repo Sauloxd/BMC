@@ -1,12 +1,12 @@
 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" id="row-<%= match.id %>">
     <td class="px-2 py-4 pl-4 flex">
         <%= button_to "✏️", 
-        edit_match_series_match_path(match.match_series_id, match.id),
+        edit_match_path(match.id),
         method: :get,
         data: { turbo_frame: "modal" }
         %>
         <%= button_to "🗑️", 
-        match_series_match_path(match.match_series_id, match.id),
+        match_path(match.id),
         method: :delete
         %>
     </td>
