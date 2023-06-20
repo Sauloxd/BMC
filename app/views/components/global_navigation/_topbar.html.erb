@@ -11,7 +11,7 @@
     <div class="relative overflow-hidden cursor-pointer w-8 h-8 bg-slate-200 block rounded-full">
       <img
         class="w-full"
-        src="<%= url_for(current_user.avatar) %>" 
+        src="<%= avatar_url(current_user.avatar) %>" 
         alt="Your profile picture">
     </div>
   <% end %>

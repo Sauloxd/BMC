@@ -5,9 +5,9 @@
     </h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, autocomplete: "off" }) do |f| %>
       <div data-controller="upload-image">
-        <div class="ml-12 mb-8">
+        <div class="mb-8 flex flex-col items-center">
           <%= f.label :avatar, class: "relative overflow-hidden cursor-pointer w-36 h-36 bg-slate-200 block rounded-full" do %>
-            <img id="upload-image__preview" class="w-full" src="<%= url_for(resource.avatar) || "https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=#{resource.name.first}" %>" alt="edit your profile picture">
+            <img id="upload-image__preview" class="w-full" src="<%= avatar_url(resource.avatar) %>" alt="edit your profile picture">
             <div class="absolute inset-x-1/2 bottom-0"> ✏️ </div>
           <% end %>
           <div id="upload-image__caption" class="mt-2 text-xs text-red-400 hidden"> 
