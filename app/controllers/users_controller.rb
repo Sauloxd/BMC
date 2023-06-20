@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     @users = @users.where.not(id: exclude_params) if params[:excludes].present?
     @users = @users.by_email(params[:query]) if params[:query].present?
     @users = @users.in_match_series(scope[:in_match_series]) if scope[:in_match_series].present?
-    
+
+    expires_in 20.seconds
+
     respond_to do |format|
       format.turbo_stream
     end
