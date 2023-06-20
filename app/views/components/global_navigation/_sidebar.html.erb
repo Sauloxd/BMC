@@ -1,0 +1,27 @@
+<aside id="global-navigation-sidebar" aria-label="Sidebar" 
+  class="fixed top-0 left-0 z-40 sm:relative w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white"
+>
+  <div class="h-full flex flex-col p-4 justify-items-center">
+    <a href="<%= root_path %>" class="text-lg font-bold mb-12">
+      BMC
+    </a>
+    <div class="grow">
+      <%= render 'components/global_navigation/sidebar_item',
+        path: match_series_index_path,
+        icon: '🎾',
+        label: 'Rankings'
+      %>
+      <%= render 'components/global_navigation/sidebar_item',
+        path: nil,
+        icon: '📸',
+        label: 'Photos'
+      %>
+      <%= render 'components/global_navigation/sidebar_item',
+        path: nil,
+        icon: '🏖️',
+        label: 'Trips'
+      %>
+    </div>
+    <%= link_to "Sign out🚪🚶‍♀️", destroy_user_session_path, class: "text-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+  </div>
+</aside>

@@ -1,0 +1,11 @@
+<a href="<%= local_assigns[:path] %>" class="
+  flex flex-row p-2 cursor-pointer items-center hover:bg-indigo-100 transition rounded font-semibold
+  <%= 'bg-indigo-100 text-indigo-500' if local_assigns[:path] && current_page?(local_assigns[:path]) %>
+">
+  <div class="mr-2">
+    <%= local_assigns[:icon] %>
+  </div>
+  <div class="text-sm">
+    <%= local_assigns[:label] %>
+  </div>
+</a>
