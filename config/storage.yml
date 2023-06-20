@@ -6,6 +6,10 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+# https://stackoverflow.com/questions/55724341/where-do-i-set-cache-information-for-my-images
+# https://bitcrowd.dev/caching-with-active-storage
+# https://blog.saeloun.com/2021/09/14/rails-7-adds-expiring-urls-to-active-storage/
+# Needs to be used in conjunctions with : avatar.url(expires_in: 1.week)
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3

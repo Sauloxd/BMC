@@ -5,13 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'open-uri'
 
 (1..10).each do |i|
-  User.create!(
+  u = User.create!(
     email: "player#{i}@email.com",
     password: '123456',
     name: "player #{i}"
   )
+  downloaded_image = URI.parse("https://ui-avatars.com/api/?background=random").open
+  u.avatar.attach(io: downloaded_image  , filename: "random.jpg")
 end
 
 User.create!(
