@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import Controller from "./base_controller"
 import MicroModal from 'micromodal';
 
 export default class extends Controller {

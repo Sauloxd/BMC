@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import Controller from "./base_controller"
 
 export default class extends Controller {
   connect() {
