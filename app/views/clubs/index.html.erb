@@ -1,0 +1,32 @@
+<div class="flex items-center m-8">
+    <h2 class="text-3xl font-semibold flex-grow"> 
+        Clubs
+    </h2>
+    
+    <%= button_to "New club",
+        new_club_path,
+        class: "text-center p-2 bg-indigo-500 text-white rounded",
+        method: :get,
+        data: { turbo_frame: "modal" } %>
+</div>
+
+<div class="relative overflow-x-auto m-8">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-indigo-500 uppercase bg-indigo-100">
+            <tr>
+                <th scope="col" class="px-2 pl-4 py-3">
+                    Actions
+                </th>
+                <th scope="col" class="px-2 py-3 w-full">
+                    Name
+                </th>
+                <th scope="col" class="px-2 pr-4 py-3">
+                    Members
+                </th>
+            </tr>
+        </thead>
+        <tbody id="clubs_tbody">
+          <%= render @clubs %>
+        </tbody>
+    </table>
+</div>

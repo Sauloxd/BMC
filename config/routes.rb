@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  resources :clubs
+  
   resources :match_series do 
     resources :matches
   end

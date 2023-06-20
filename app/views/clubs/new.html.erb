@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "modal" do %>
+  <header class="modal__header">
+    <h2 class="modal__title" id="form-modal-title">
+      New Club
+    </h2>
+    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+  </header>
+  <main class="modal__content pt-4" id="form-modal-content">
+    <%= render "clubs/form", club: @club, members: @members %>
+  </main>
+<% end %>

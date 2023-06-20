@@ -1,0 +1,35 @@
+<%= form_with model: club, html: { autocomplete: "off" } do |f| %>
+  <div>
+    <%= f.label :name, class: {
+      "text-sm block" => true,
+      "text-red-400" => club.errors[:name].present?,
+    } %>
+    <%= f.text_field :name, 
+      autofocus: true,
+      placeholder: 'Arena Kaizen',
+      class: {
+        "rounded placeholder:text-slate-200" =>  true,
+        "border-indigo-300" => club.errors[:name].empty?,
+        "border-red-400" => club.errors[:name].present?
+      } 
+    %>
+    <% club.errors[:name].each do |msg| %>
+      <div class="mt-2 text-xs text-red-400"> 
+        <%= msg %>
+      </div>
+    <% end %>
+    <div class="mt-4">
+      <%= render "components/user_select_search/input", 
+        element_id: "member_ids", 
+        label: "Membros",
+        users: members,
+        multiple: true
+      %>
+    </div>
+    
+  </div>
+
+  <div class="mt-4 w-full">
+    <%= f.submit class: "w-full text-center p-2 bg-indigo-500 text-white rounded cursor-pointer" %>
+  </div>
+<% end %>

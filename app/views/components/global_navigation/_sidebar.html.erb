@@ -7,6 +7,11 @@
     </a>
     <div class="grow">
       <%= render 'components/global_navigation/sidebar_item',
+        path: clubs_path,
+        icon: '🎾',
+        label: 'Clubs'
+      %>
+      <%= render 'components/global_navigation/sidebar_item',
         path: match_series_index_path,
         icon: '🎾',
         label: 'Rankings'

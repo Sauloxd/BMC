@@ -1,4 +1,6 @@
 class MatchSeriesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @match_series = MatchSeries
       .joins("left join match_series_participations ON match_series_participations.match_series_id = match_series.id")
