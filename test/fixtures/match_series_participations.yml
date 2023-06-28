@@ -1,9 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &defaults
+  created_at: <%= 5.day.ago.to_fs(:db) %>
+  updated_at: <%= 5.day.ago.to_fs(:db) %>
 
-one:
-  match_series: one
-  user: one
+ranking_bmc_msp_tocha:
+  <<: *defaults
+  match_series: ranking_bmc
+  user: tocha
 
-two:
-  match_series: two
-  user: two
+ranking_bmc_msp_saulo:
+  <<: *defaults
+  match_series: ranking_bmc
+  user: saulo
+
+ranking_bmc_msp_tipe:
+  <<: *defaults
+  match_series: ranking_bmc
+  user: tipe
+
+ranking_bmc_msp_peter:
+  <<: *defaults
+  match_series: ranking_bmc
+  user: peter

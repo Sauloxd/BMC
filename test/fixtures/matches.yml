@@ -1,15 +1,40 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &defaults
+  created_at: <%= 5.day.ago.to_fs(:db) %>
+  updated_at: <%= 5.day.ago.to_fs(:db) %>
+  played_at: <%= 5.day.ago.to_fs(:db) %>
+  
+match_1:
+  <<: *defaults
+  match_series: ranking_bmc
+  score_a: 6
+  score_b: 4
+  score_tiebreak_a: 0
+  score_tiebreak_b: 0
+  player_a_1: saulo
+  player_a_2: tipe
+  player_b_1: peter
+  player_b_2: tocha
 
-one:
-  match_series: one
-  score_a: 1
-  score_b: 1
-  score_tiebreak_a: 1
-  score_tiebreak_b: 1
+match_2:
+  <<: *defaults
+  match_series: ranking_bmc
+  score_a: 3
+  score_b: 6
+  score_tiebreak_a: 0
+  score_tiebreak_b: 0
+  player_a_1: saulo
+  player_a_2: tocha
+  player_b_1: peter
+  player_b_2: tipe
 
-two:
-  match_series: two
-  score_a: 1
-  score_b: 1
-  score_tiebreak_a: 1
+match_2:
+  <<: *defaults
+  match_series: ranking_bmc
+  score_a: 7
+  score_b: 6
+  score_tiebreak_a: 7
   score_tiebreak_b: 1
+  player_a_1: saulo
+  player_a_2: peter
+  player_b_1: tocha
+  player_b_2: tipe

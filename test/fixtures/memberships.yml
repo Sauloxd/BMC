@@ -1,9 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &defaults
+  created_at: <%= 5.day.ago.to_fs(:db) %>
+  updated_at: <%= 5.day.ago.to_fs(:db) %>
 
-one:
-  club: one
-  user: one
-
-two:
-  club: two
-  user: two
+<% [
+    ['saulo', 'Saulo Furuta', 'saulo@bmc.com'],
+    ['chu', 'Rebeca Chu', 'rebeca@bmc.com'],
+    ['ghe', 'Ghe Kitamura', 'gheorgia@bmc.com'],
+    ['peter', 'Danilo Miyatake', 'peter@bmc.com'],
+    ['ara', 'Lucas Araujo', 'araujo@bmc.com'],
+    ['andre', 'Andre Skoll', 'andre@bmc.com'],
+    ['jao', 'João Tormin Vieira dos Santos', 'jt@bmc.com'],
+    ['tipe', 'Filipe Tai', 'tipe@bmc.com'],
+    ['jacque', 'Jacqueline Chen', 'jacque.chen@bmc.com'],
+    ['will', 'William Tutihashi', 'will@bmc.com'],
+    ['paraiba', 'Mateus Medeiros', 'paraiba@bmc.com'],
+    ['tocha', 'Marcelo Kussano', 'tocha@bmc.com']
+  ].each do |(nickname, name, email)| %>
+membership_<%= nickname %>:
+  <<: *defaults
+  club: kaizen
+  user: <%= nickname %>
+<% end %>

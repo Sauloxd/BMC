@@ -1,7 +1,24 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &defaults
+  created_at: <%= 5.day.ago.to_fs(:db) %>
+  updated_at: <%= 5.day.ago.to_fs(:db) %>
 
-one:
-  name: MyString
+ranking_kosmos:
+  <<: *defaults
+  name: Ranking Kosmos
+  club: kosmos
 
-two:
-  name: MyString
+ranking_bmc:
+  <<: *defaults
+  name: Ranking BMC
+  club: kaizen
+
+ranking_que_importa:
+  <<: *defaults
+  name: Ranking que importa
+  club: kaizen
+
+
+ranking_arena_on:
+  <<: *defaults
+  name: Ranking Arena ON
+  club: arena_on

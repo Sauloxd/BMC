@@ -1,7 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &defaults
+  created_at: <%= 5.day.ago.to_fs(:db) %>
+  updated_at: <%= 5.day.ago.to_fs(:db) %>
 
-one:
-  name: MyString
+kaizen:
+  <<: *defaults
+  name: Arena Kaizen
+  owner: tocha
 
-two:
-  name: MyString
+kosmos:
+  <<: *defaults
+  name: Kosmos Club
+  owner: shigue
+
+arena_on:
+  <<: *defaults
+  name: Arena On
+  owner: dono_arena_on
