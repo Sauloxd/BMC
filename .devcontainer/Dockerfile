@@ -23,6 +23,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         git  \
         curl \
         vim  \
+        less \
         # To use devcontainer in vscode
         openssh-client
 
