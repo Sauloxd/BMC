@@ -1,5 +1,6 @@
 class ClubsController < ApplicationController
   before_action :authenticate_user!
+  verify_authorized only: :update 
 
   def index
     @clubs = Club.has_user(current_user.id)
@@ -41,6 +42,7 @@ class ClubsController < ApplicationController
 
   def update
     @club = Club.find(params[:id])
+    authorize! @club
     current_user_ids = @club.memberships.pluck(:user_id)
     to_be_created = (params[:member_ids] || []) - current_user_ids
     to_be_deleted = current_user_ids - (params[:member_ids] || [])
@@ -54,9 +56,12 @@ class ClubsController < ApplicationController
     respond_to do |format|
       format.turbo_stream
     end
-
   rescue StandardError => e
-    render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      format.turbo_stream do
+        render :edit, status: :unprocessable_entity
+      end
+    end
   end
 
   def destroy

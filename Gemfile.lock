@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.5)
+      ruby-next-core (>= 0.14.0)
     actioncable (7.0.4.3)
       actionpack (= 7.0.4.3)
       activesupport (= 7.0.4.3)
@@ -234,6 +236,7 @@ GEM
       language_server-protocol (~> 3.17.0)
       sorbet-runtime
       syntax_tree (>= 6.1.1, < 7)
+    ruby-next-core (0.15.3)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.9.1)
@@ -304,6 +307,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy
   aws-sdk-s3
   bootsnap
   capybara

@@ -1,6 +1,9 @@
 require "test_helper"
+require "action_policy/test_helper"
 
 class ClubsControllerTest < ActionDispatch::IntegrationTest
+  include ActionPolicy::TestHelper
+
   test "when not authenticated it should redirect to sign in" do
     get clubs_path
 
@@ -33,17 +36,33 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     club_one = clubs(:one)
     user_two = users(:two)
     sign_in club_one.owner
-
-    assert_changes -> { club_one.memberships.first.user_id }, from: users(:one).id, to: users(:two).id do
-      patch club_path(club_one), params: {
-        format: :turbo_stream, 
-        club: {
-          name: 'Updated club name',
-        },
-        member_ids: [user_two.id]
-      }
+    
+    assert_authorized_to(:update?, club_one) do
+      assert_changes -> { club_one.memberships.first.user_id }, from: users(:one).id, to: users(:two).id do
+        patch club_path(club_one), params: {
+          format: :turbo_stream, 
+          club: {
+            name: 'Updated club name',
+          },
+          member_ids: [user_two.id]
+        }
+      end
     end
 
     assert_equal 'Updated club name', club_one.reload.name
   end 
+
+  test "fails to update club when user is not owner" do 
+    club_one = clubs(:one)
+    user_two = users(:two)
+    club_one.memberships.create(user: user_two)
+    sign_in user_two
+
+    patch club_path(club_one), params: {
+      format: :turbo_stream,
+      club: { name: 'Updated club name' },
+    }
+    refute club_one.reload.name == 'Updated club name'
+    assert_response :unauthorized
+  end
 end

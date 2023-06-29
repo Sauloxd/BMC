@@ -31,6 +31,8 @@
       <p class="absolute rounded text-white bg-indigo-500 bottom-2 left-2 p-2 text-sm"><%= alert %></p>
     <% end %>
 
+    <%= turbo_frame_tag "toast" %>
+
     <div class="modal micromodal-slide" id="form-modal" aria-hidden="true" data-controller="modal"
       data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close"
       >

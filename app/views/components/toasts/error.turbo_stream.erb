@@ -1,0 +1,5 @@
+<%= turbo_frame_tag.replace "toast" do %>
+  <p class="absolute rounded text-white bg-red-500 bottom-2 left-2 p-2 text-sm z-40">
+    <%= @toast[:message] %>
+  </p>
+<% end %>
