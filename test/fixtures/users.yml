@@ -28,3 +28,11 @@ shigue:
 dono_arena_on:
   <<: *defaults
   email: $LABEL@saulo.dev
+
+one:
+  <<: *defaults
+  email: $LABEL@saulo.dev
+
+two:
+  <<: *defaults
+  email: $LABEL@saulo.dev

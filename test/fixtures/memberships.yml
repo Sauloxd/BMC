@@ -21,3 +21,8 @@ membership_<%= nickname %>:
   club: kaizen
   user: <%= nickname %>
 <% end %>
+
+one:
+  <<: *defaults
+  club: one
+  user: one

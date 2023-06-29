@@ -17,3 +17,13 @@ arena_on:
   <<: *defaults
   name: Arena On
   owner: dono_arena_on
+
+one:
+  <<: *defaults
+  name: A simple club 1
+  owner: one
+
+two:
+  <<: *defaults
+  name: A simple club 2
+  owner: two
