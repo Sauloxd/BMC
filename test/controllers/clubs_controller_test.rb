@@ -64,5 +64,6 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     }
     refute club_one.reload.name == 'Updated club name'
     assert_response :unauthorized
+    assert_select 'p', I18n.t(:unauthorized)
   end
 end

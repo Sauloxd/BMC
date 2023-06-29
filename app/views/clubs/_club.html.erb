@@ -3,13 +3,22 @@
     <%= button_to "✏️", 
       edit_club_path(club),
       method: :get,
-      data: { turbo_frame: "modal" }
+      data: { turbo_frame: "modal" },
+      disabled: !allowed_to?(:update?, club),
+      class: {
+        'opacity-20' => !allowed_to?(:update?, club)
+      }
     %>
     <%= button_to "🗑️", 
       club_path(club),
-      method: :delete
+      method: :delete,
+      disabled: !allowed_to?(:destroy?, club),
+      class: {
+        'opacity-20' => !allowed_to?(:update?, club)
+      }
     %>
   </td>
+
   <td scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-full">
     <%= link_to club.name, club_path(club), class: "hover:text-indigo-500 rounded cursor-pointer" %>
   </td>

@@ -19,7 +19,6 @@ class ClubsController < ApplicationController
 
   def new
     @club = Club.new
-    @members = User.where(id: current_user)
   end
 
   def create
