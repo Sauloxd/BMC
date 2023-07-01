@@ -8,20 +8,22 @@
     <div class="grow">
       <%= render 'components/global_navigation/sidebar_item',
         path: clubs_path,
-        active_paths: [/clubs\//, /match_series\//, /matches\//],
+        active_paths: [/\/clubs/, /\/match_series/, /\/matches/],
         icon: '🎾',
         label: 'Clubs'
       %>
-      <%= render 'components/global_navigation/sidebar_item',
-        path: nil,
-        icon: '📸',
-        label: 'Photos'
-      %>
-      <%= render 'components/global_navigation/sidebar_item',
-        path: nil,
-        icon: '🏖️',
-        label: 'Trips'
-      %>
+      <% if false %>
+        <%= render 'components/global_navigation/sidebar_item',
+          path: nil,
+          icon: '📸',
+          label: 'Photos'
+        %>
+        <%= render 'components/global_navigation/sidebar_item',
+          path: nil,
+          icon: '🏖️',
+          label: 'Trips'
+        %>
+      <% end %>
     </div>
     <%= link_to "Sign out🚪🚶‍♀️", destroy_user_session_path, class: "text-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
   </div>
