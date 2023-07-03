@@ -1,4 +1,4 @@
-import Controller from "./base_controller"
+import Controller from "controllers/base_controller"
 import { get } from '@rails/request.js'
 
 export default class extends Controller {

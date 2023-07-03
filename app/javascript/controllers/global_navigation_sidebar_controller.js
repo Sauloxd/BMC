@@ -1,4 +1,4 @@
-import Controller from "./base_controller"
+import Controller from "controllers/base_controller"
 
 export default class extends Controller {
   SIDEBAR_ID = 'global-navigation-sidebar'
