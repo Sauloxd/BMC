@@ -1,12 +1,26 @@
 {
-  "name": "Saulo.dev blog",
+  "name": "BMC tracking app",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "runner",
-  "workspaceFolder": "/app",
+  "service": "app",
   "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
       "extensions": ["castwide.solargraph"]
     }
-  }
+  },
+  /**
+   Based on https://github.com/rails-lambda/lamby-cookiecutter
+  */
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils": {},
+    "ghcr.io/devcontainers/features/node:latest": {},
+    "ghcr.io/devcontainers/features/aws-cli:latest": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:latest": {},
+    "ghcr.io/devcontainers/features/sshd:latest": {}
+  },
+  "workspaceFolder": "/app",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached"
+  ]
 }
+

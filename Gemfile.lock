@@ -139,6 +139,10 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    lambda-console-ruby (1.0.0)
+    lamby (5.0.0)
+      lambda-console-ruby
+      rack
     language_server-protocol (3.17.0.3)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -315,6 +319,7 @@ DEPENDENCIES
   devise
   importmap-rails
   jbuilder
+  lamby
   pg (~> 1.1)
   pry
   puma (~> 5.0)

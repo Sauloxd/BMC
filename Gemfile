@@ -13,10 +13,13 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
+
+# Non default
 gem 'devise'
 gem "tailwindcss-rails", "~> 2.0"
 gem "aws-sdk-s3", require: false
 gem "action_policy"
+gem 'lamby'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

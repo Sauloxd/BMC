@@ -11,3 +11,7 @@ The workflow is:
 
 This file configures the dev container environment, and should be properly configured to use Dockerfile or Docker Compose.
 See there for more: https://code.visualstudio.com/docs/devcontainers/create-dev-container
+
+### features
+
+On top of our dev image container, the key `features` in `devcontainer,json` also adds utilities when running the images, like: node, aws-cli and others, that is related to `tools needed for building app for deploy`, rather than tools needed for development. That's why they are not listed inside `.devcontainer/Dockerfile`.

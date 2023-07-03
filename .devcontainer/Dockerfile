@@ -49,6 +49,13 @@ RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v
     -p https://github.com/zsh-users/zsh-autosuggestions \
     -p https://github.com/zsh-users/zsh-completions
 
+# RUN apt update
+
+# Temporary multi-platform SAM CLI install method.
+# https://github.com/aws/aws-sam-cli/issues/3908
+# RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN apt-get install -y pip && pip install aws-sam-cli
+
 # Configure bundler
 ENV LANG=C.UTF-8 \
     BUNDLE_JOBS=4 \
@@ -57,9 +64,16 @@ ENV LANG=C.UTF-8 \
 # Store Bundler settings in the project's root
 ENV BUNDLE_APP_CONFIG=.bundle
 
+# Local devcontainer Codespaces compatibility.
+ENV BUNDLE_IGNORE_CONFIG=1
+ENV BUNDLE_PATH=./vendor/bundle
+ENV BUNDLE_CACHE_PATH=./vendor/cache
+
 # Uncomment this line if you want to run binstubs without prefixing with `bin/` or `bundle exec`
 ENV PATH /app/bin:$PATH
 
 # Upgrade RubyGems and install the latest Bundler version
 RUN gem update --system && \
     gem install bundler
+
+

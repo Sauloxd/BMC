@@ -1,11 +1,11 @@
 x-app: &app
   build:
     context: .
+    dockerfile: Dockerfile
     args:
       RUBY_VERSION: '3.2.2'
       PG_MAJOR: '15'
   working_dir: /app
-  image: example-dev:1.0.2
   environment: &env
     RAILS_ENV: ${RAILS_ENV:-development}
   tmpfs:
@@ -42,9 +42,10 @@ x-backend: &backend
       condition: service_healthy
 
 services:
-  runner:
+  app:
     <<: *backend
-    command: zsh
+    command: sleep infinity
+    privileged: true
 
   rails:
     <<: *backend
