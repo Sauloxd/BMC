@@ -34,14 +34,6 @@ That's why it is important to have devcontainer and prod container in sync (beca
 3. Allow you docker setup to download gems in local `./vendor/bundle` because this is the bundle that will be used in production
 4. WSL architecture requires `template.yaml` for SAM to use `x86_64` architeture. 
 
-
-## FAQ
-### Git
-
-If using WSL, vscode devcontainers reuse ssh keys from host.
-It doesn't reuse keys from WSL, but from windows host.
-Basically, check if windows host has ssh correctly configures (`ssh-add -l`).
-If not, you have to configure (and add to startup) the ssh client on windows powershell.
-See [why](https://stackoverflow.com/questions/70206554/share-ssh-keys-with-vs-code-devcontainer-running-with-dockers-wsl2-backend) and [how](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement) to configure SSH keys to windows host
-Once inside devcontainer, check if keys are there (`ssh-add -l` again). Also check DevContainer build logs (in VSCODE) to see if SSH keys are being properly proxied (and where they are getting your keys from)
-
+### Moving parts
+1. Database - Hosted on linode, the cheapest managed database I could find
+2. Secrets - managed by `secret parameters` on AWS. Injected in production with `crypteia`. Don't forget to add a policy for your lambda function to access your secrets!
